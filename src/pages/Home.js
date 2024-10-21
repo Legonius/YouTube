@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Buttons from "./Buttons";
-import VideoCard from "./VideoCard";
+import Buttons from "../Components/Buttons";
+import VideoCard from "../Components/VideoCard";
 import { VideosList } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { on } from "../utils/slices/appSlice";
 
-const Body = () => {
+const Home = () => {
   const [videoData, setVideoData] = useState(null);
+  const dispatch = useDispatch();
 
   const suggestions = [
     "All",
@@ -22,6 +25,7 @@ const Body = () => {
   ];
   useEffect(() => {
     getList();
+    dispatch(on());
   }, []);
   const getList = async () => {
     const key = process.env.REACT_APP_YOUTUBE_APIKEY;
@@ -41,10 +45,9 @@ const Body = () => {
           videoData.items.map((item) => (
             <VideoCard key={item.id} info={item} />
           ))}
-        {/* {videoData && <VideoCard info={videoData.items[0]} />} */}
       </div>
     </div>
   );
 };
 
-export default Body;
+export default Home;

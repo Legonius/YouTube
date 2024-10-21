@@ -1,29 +1,32 @@
 import React from "react";
 import Header from "./Components/Header";
-import Sidebar from "./Components/Sidebar";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Body from "./Components/Body";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Watch from "./pages/Watch";
+import MainBody from "./Components/MainBody";
+import Home from "./pages/Home";
+import Results from "./pages/Results";
 
 const App = () => {
   const route = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
-      children: [],
+      element: (
+        <div className="text-slate-700 w-screen h-screen relative dark:bg-black dark:text-white">
+          <Header />
+          <MainBody />
+        </div>
+      ),
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        { path: "/watch", element: <Watch /> },
+        { path: "/results", element: <Results /> },
+      ],
     },
-    { path: "/watch", element: <Watch /> },
   ]);
-  return (
-    <div className="text-slate-700 w-screen h-screen relative">
-      <Header />
-      <div className="flex pt-20 h-full">
-        <Sidebar />
-        <Outlet />
-        <RouterProvider router={route} />
-      </div>
-    </div>
-  );
+  return <RouterProvider router={route} />;
 };
 
 export default App;

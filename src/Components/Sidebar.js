@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isOpen = useSelector((Store) => Store.appSwitch.isOpen);
@@ -9,7 +10,9 @@ const Sidebar = () => {
   return (
     <div className="max-w-52 min-w-48 h-full overflow-auto flex flex-col gap-3 mt-3 font-semibold">
       <ul className="flex flex-col gap-3 pl-10">
-        <li>HOME</li>
+        <li>
+          <Link to={"/"}>HOME</Link>
+        </li>
         <li>Short</li>
         <li>Subscriptions</li>
       </ul>
