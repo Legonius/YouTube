@@ -10,11 +10,11 @@ const appSlice = createSlice({
     off: (state) => {
       state.isOpen = false;
     },
-    on: (state) => {
+    onn: (state) => {
       state.isOpen = true;
     },
   },
 });
 
-export const { toggle, off, on } = appSlice.actions;
+export const { toggle, off, onn } = appSlice.actions;
 export default appSlice.reducer;

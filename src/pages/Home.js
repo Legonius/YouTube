@@ -3,7 +3,7 @@ import Buttons from "../Components/Buttons";
 import VideoCard from "../Components/VideoCard";
 import { VideosList } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { on } from "../utils/slices/appSlice";
+import { onn } from "../utils/slices/appSlice";
 
 const Home = () => {
   const [videoData, setVideoData] = useState(null);
@@ -25,7 +25,7 @@ const Home = () => {
   ];
   useEffect(() => {
     getList();
-    dispatch(on());
+    dispatch(onn());
   }, []);
   const getList = async () => {
     const key = process.env.REACT_APP_YOUTUBE_APIKEY;

@@ -48,7 +48,7 @@ const Header = () => {
   // go to result page including searching query
   const gotoSearchResultPage = (sug) => {
     setSearch(sug);
-    navigate("/results", { state: { data: sug } });
+    navigate(`/results?search_query=${sug}`, { state: { data: sug } });
   };
   return (
     <div className="grid grid-flow-col w-screen py-3 px-4 shadow-lg fixed backdrop-blur-2xl bg-white/80 dark:bg-black/80">
