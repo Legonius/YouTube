@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { SEARCH_YOUTUBE_API } from "../utils/constants";
 
 const useUtilities = () => {
   const navigate = useNavigate();
@@ -65,11 +66,29 @@ const useUtilities = () => {
     navigate(`/watch?v=${id}`);
   };
 
+  //Search video list with keyword
+  const searchResult = async (key, set) => {
+    if (key.length > 0) {
+      try {
+        const response = await fetch(
+          SEARCH_YOUTUBE_API +
+            key +
+            `&key=${process.env.REACT_APP_YOUTUBE_APIKEY}`
+        );
+        const data = await response.json();
+        set(data.items); // Storing video IDs in state
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    }
+  };
   return {
     overflowText,
     numberFomatting,
     dateFormatting,
     handleCurrentVideoInfo,
+    searchResult,
   };
 };
 export default useUtilities;

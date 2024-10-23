@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { GrDislike, GrLike } from "react-icons/gr";
 import useUtilities from "../Hooks/useUtilities";
 import { FaRegShareSquare } from "react-icons/fa";
